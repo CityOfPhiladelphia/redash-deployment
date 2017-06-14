@@ -1,0 +1,6 @@
+venv/
+reference/
+notes.txt
+scratch_pad.txt
+terraform.tfstate
+terraform.tfstate.backup
