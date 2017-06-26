@@ -78,6 +78,18 @@ resource "aws_security_group" "test_redash" {
   }
 }
 
+# ASG
+/*
+resource "aws_autoscaling_group" "redash_cluster" {
+  name                  = "${var.name_prefix}..."                
+  vpc_zone_identifier
+  min_size
+  max_size
+  desired_capacity
+  launch_configuration
+} 
+*/
+
 data "aws_ami" "ubuntu" {
   filter {
     name = "image-id"
@@ -88,14 +100,14 @@ data "aws_ami" "ubuntu" {
 }
 
 # resource config.
-resource "aws_instance" "hello-world" {
+resource "aws_instance" "cook_me_a_vpc" {
     ami = "${data.aws_ami.ubuntu.id}"
-    key_name = "nweb  z"
+    key_name = "nwebz"
     instance_type = "t2.micro"
     subnet_id = "${aws_subnet.test_redash.0.id}"
     vpc_security_group_ids = ["${aws_security_group.test_redash.id}"]
 
     tags {
-      Name = "practice template"
+      Name = "test_redash.data.phila.gov"
     }
 }
